@@ -1,0 +1,19 @@
+{
+  "name": "range-node",
+  "description": "Range SDK for node",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "fmt": "./node_modules/.bin/prettier --write **/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "prettier": "^1.17.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "printWidth": 100
+  }
+}
