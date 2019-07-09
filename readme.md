@@ -26,7 +26,7 @@ See this readme and the [API docs](http://www.range.co/docs/api).
 ## Installation
 
 ```bash
-npm install range --save
+npm install range-sdk --save
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ This package needs to be configured with an API key which you can generate by vi
 `RANGE_ACCESS_KEY` environment variable, or as a constructor argument.
 
 ```js
-const Range = require('../lib/range');
+const Range = require('range-sdk');
 const rangeClient = new Range('deadbeef1234567890');
 ```
 
