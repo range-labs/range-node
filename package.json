@@ -1,5 +1,5 @@
 {
-  "name": "range-node",
+  "name": "range-sdk",
   "description": "Range SDK for node",
   "version": "1.0.0",
   "scripts": {
