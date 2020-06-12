@@ -10,10 +10,10 @@ const Range = require('../lib/range');
 const htmlURL = process.argv[2];
 
 console.log('Fetching', htmlURL);
-const req = https.get(htmlURL, res => {
+const req = https.get(htmlURL, (res) => {
   res.setEncoding('utf8');
   let body = '';
-  res.on('data', data => (body += data));
+  res.on('data', (data) => (body += data));
   res.on('end', () => {
     if (res.statusCode !== 200) {
       fail(`status ${res.statusCode}`);
@@ -21,9 +21,9 @@ const req = https.get(htmlURL, res => {
     }
     const payload = parse(body);
     new Range()
-      .addSuggestion(payload)
-      .then(data => {
-        console.log('Suggestion made');
+      .recordInteraction(payload)
+      .then((data) => {
+        console.log('Interaction recorded');
       })
       .catch(fail);
   });
@@ -41,10 +41,8 @@ function parse(body) {
   }
 
   return {
-    snippet_type: 1,
-    dedupe_strategy: 'UPSERT_PENDING',
-    reason: 'ASSIGNED',
-    is_future: true,
+    type: 'ASSIGNED',
+    attachment_id: '123',
     attachment: {
       source_id: htmlURL.replace(/[^a-zA-Z0-9]/g, ''),
       type: 'LINK',
