@@ -16,7 +16,7 @@ const req = https.get(htmlURL, (res) => {
   res.on('data', (data) => (body += data));
   res.on('end', () => {
     if (res.statusCode !== 200) {
-      fail(`status ${res.statusCode}`);
+      fail(`status ${res.statusCode}\n${JSON.stringify(res.headers)}`);
       return;
     }
     const payload = parse(body);
