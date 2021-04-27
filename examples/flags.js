@@ -1,6 +1,6 @@
 // Minimal flag support for very basic key-value pairs.
 // --name=value --name value --boolean
-module.exports = function (key) {
+export default function (key) {
   let args = process.argv;
   for (let i = 2; i < args.length; i++) {
     let arg = args[i];
@@ -13,7 +13,7 @@ module.exports = function (key) {
     }
   }
   return null;
-};
+}
 
 function match(key, arg) {
   return isFlag(arg) && key == arg.replace(/--?/g, '');

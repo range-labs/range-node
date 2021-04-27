@@ -6,8 +6,8 @@
 //
 // Default = auth user and current week.
 //
-const Range = require('../lib/range');
-const flags = require('./flags');
+import Range from '../lib/range.js';
+import flags from './flags.js';
 
 let target_id = flags('target');
 let weekNum = Number(flags('week')) || 0;
