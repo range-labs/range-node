@@ -4,8 +4,8 @@
 //  export RANGE_ACCESS_KEY=....
 //  node remind.js https://blog.remote.com/why-you-should-be-doing-async-work/
 
-const https = require('https');
-const Range = require('../lib/range');
+import https from 'https';
+import Range from '../lib/range.js';
 
 const htmlURL = process.argv[2];
 

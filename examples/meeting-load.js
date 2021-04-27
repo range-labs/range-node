@@ -4,7 +4,7 @@
 //  export RANGE_ACCESS_KEY=....
 //  node meeting-load.js
 
-const Range = require('../lib/range');
+import Range from '../lib/range.js';
 
 const client = new Range();
 

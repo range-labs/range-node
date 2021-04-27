@@ -1,7 +1,7 @@
 {
   "name": "range-sdk",
   "description": "Range SDK for node",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "scripts": {
     "lint": "./node_modules/.bin/eslint **/*.js",
     "fmt": "./node_modules/.bin/prettier --write **/*.js"
@@ -18,5 +18,10 @@
     "semi": true,
     "singleQuote": true,
     "quoteProps": "consistent"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "main": "lib/range.js",
+  "type": "module"
 }
