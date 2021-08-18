@@ -10,10 +10,10 @@ import Range from '../lib/range.js';
 const htmlURL = process.argv[2];
 
 console.log('Fetching', htmlURL);
-const req = https.get(htmlURL, (res) => {
+const req = https.get(htmlURL, res => {
   res.setEncoding('utf8');
   let body = '';
-  res.on('data', (data) => (body += data));
+  res.on('data', data => (body += data));
   res.on('end', () => {
     if (res.statusCode !== 200) {
       fail(`status ${res.statusCode}\n${JSON.stringify(res.headers)}`);
@@ -22,7 +22,7 @@ const req = https.get(htmlURL, (res) => {
     const payload = parse(body);
     new Range()
       .recordInteraction(payload)
-      .then((data) => {
+      .then(data => {
         console.log('Interaction recorded');
       })
       .catch(fail);

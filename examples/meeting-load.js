@@ -30,7 +30,7 @@ async function main() {
     console.log('  ', prettyMins(avgCalenderedMins, 'calendered time'));
     console.log('');
 
-    analytics.forEach((a) => {
+    analytics.forEach(a => {
       let s = a.summary;
       console.log(`${a.user.profile.full_name}:`);
       console.log('  ', pretty(s.meetingCount, 'meetings', avgMeetingCount));
@@ -74,7 +74,7 @@ async function* fetchEventAnalysis() {
 
 function summarize(days) {
   let summary = { calenderedMins: 0, meetingMins: 0, meetingCount: 0 };
-  days.forEach((es) => {
+  days.forEach(es => {
     summary.calenderedMins +=
       es.self.duration_mins +
       es.one_on_one.duration_mins +
