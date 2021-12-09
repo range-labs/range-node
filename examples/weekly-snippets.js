@@ -34,7 +34,7 @@ new Range()
 
     // Moods are emojione short-codes. To be compatible with Slack or GitHub
     // we'd need a mapping.
-    let moods = updates.map((update) => update.mood).filter((mood) => !!mood);
+    let moods = updates.map(update => update.mood).filter(mood => !!mood);
 
     // For this report we extract all the past snippets and enrich with the
     // attachment and the client's timezone when the update was published.
@@ -42,9 +42,9 @@ new Range()
       (list, update) =>
         list.concat(
           update.snippets
-            .map((id) => snippetMap[id])
-            .filter((snippet) => snippet.snippet_type == Range.SnippetTypes.PAST)
-            .map((snippet) => {
+            .map(id => snippetMap[id])
+            .filter(snippet => snippet.snippet_type == Range.SnippetTypes.PAST)
+            .map(snippet => {
               if (snippet.attachment_id) {
                 snippet.attachment = attachmentsMap[snippet.attachment_id];
               }
@@ -66,7 +66,7 @@ new Range()
       console.log('');
     }
 
-    history.filter(isMainFocus).forEach((item) => {
+    history.filter(isMainFocus).forEach(item => {
       let day = DAYS[new Date(item.published_at).getDay()];
       console.log(` - **${day}** => ${item.transformed_content}`);
     });
@@ -76,7 +76,7 @@ new Range()
       console.log('');
       console.log('Updates:');
       console.log('--------');
-      bare.forEach((item) => console.log(` - ${item.transformed_content}`));
+      bare.forEach(item => console.log(` - ${item.transformed_content}`));
       console.log('');
     }
 
@@ -88,7 +88,7 @@ new Range()
     console.log('');
     console.log('Code changes:');
     console.log('-------------');
-    history.filter(isCodeChange).forEach((evt) => {
+    history.filter(isCodeChange).forEach(evt => {
       // Just use PR message, no snippet content.
       console.log(` - [${evt.attachment.name}](${evt.attachment.html_url})`);
     });
@@ -99,8 +99,8 @@ new Range()
     let docs = history.filter(isDocument);
     let includedDocs = {};
     docs
-      .filter((doc) => doc.reason === 'EDITED')
-      .forEach((doc) => {
+      .filter(doc => doc.reason === 'EDITED')
+      .forEach(doc => {
         if (!includedDocs[doc.attachment.id]) {
           includedDocs[doc.attachment.id] = true;
           printBullet(doc);
@@ -108,8 +108,8 @@ new Range()
       });
     console.log(' - And commented on:');
     docs
-      .filter((doc) => doc.reason === 'COMMENTED')
-      .forEach((doc) => {
+      .filter(doc => doc.reason === 'COMMENTED')
+      .forEach(doc => {
         if (includedDocs[doc.attachment.id]) return;
         console.log(`    - ${link(doc)}`);
       });
@@ -132,7 +132,7 @@ new Range()
       otherAttachments[provider].forEach(printBullet);
     }
   })
-  .catch((err) => console.error(err.stack));
+  .catch(err => console.error(err.stack));
 
 function pad(str, len) {
   if (str.length >= len) return str.substr(0, len - 3) + '...';
@@ -165,7 +165,7 @@ function link(item) {
 }
 
 function not(fn) {
-  return (arg) => !fn(arg);
+  return arg => !fn(arg);
 }
 
 function hasAttachment(item) {
