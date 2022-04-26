@@ -4,7 +4,7 @@
 //  export RANGE_ACCESS_KEY=....
 //  node activity.js
 
-const Range = require('../lib/range');
+import Range from '../lib/range.js';
 
 new Range()
   .listActivity({ include_refs: true, collation: 'ATTACHMENT' })

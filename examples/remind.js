@@ -4,8 +4,8 @@
 //  export RANGE_ACCESS_KEY=....
 //  node remind.js https://blog.remote.com/why-you-should-be-doing-async-work/
 
-const https = require('https');
-const Range = require('../lib/range');
+import https from 'https';
+import Range from '../lib/range.js';
 
 const htmlURL = process.argv[2];
 
@@ -16,7 +16,7 @@ const req = https.get(htmlURL, (res) => {
   res.on('data', (data) => (body += data));
   res.on('end', () => {
     if (res.statusCode !== 200) {
-      fail(`status ${res.statusCode}`);
+      fail(`status ${res.statusCode}\n${JSON.stringify(res.headers)}`);
       return;
     }
     const payload = parse(body);

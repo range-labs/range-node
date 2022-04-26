@@ -4,7 +4,7 @@
 //  export RANGE_ACCESS_KEY=....
 //  node errors.js
 
-const Range = require('../lib/range');
+import Range from '../lib/range.js';
 
 async function main() {
   try {
