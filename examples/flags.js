@@ -1,6 +1,6 @@
 // Minimal flag support for very basic key-value pairs.
 // --name=value --name value --boolean
-export default function (key) {
+export default function(key) {
   let args = process.argv;
   for (let i = 2; i < args.length; i++) {
     let arg = args[i];

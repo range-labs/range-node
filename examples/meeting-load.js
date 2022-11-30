@@ -30,7 +30,7 @@ async function main() {
     console.log('  ', prettyMins(avgCalenderedMins, 'calendered time'));
     console.log('');
 
-    analytics.forEach((a) => {
+    analytics.forEach(a => {
       let s = a.summary;
       console.log(`${a.user.profile.full_name}:`);
       console.log('  ', pretty(s.meetingCount, 'meetings', avgMeetingCount));
@@ -45,7 +45,7 @@ async function main() {
 function pretty(m, label, compare) {
   if (!compare) return `${m} ${label}`;
 
-  let diff = Math.round(100 * (m / compare)) - 100;
+  let diff = Math.round(100 * (m / compare));
   return `${m} ${label} (${diff}%)`;
 }
 
@@ -53,7 +53,7 @@ function prettyMins(m, label, compare) {
   let h = Math.floor(m / 60);
   let mr = m - h * 60;
   if (!compare) return `${h}h${mr}m ${label}`;
-  let diff = Math.round((100 * m) / compare) - 100;
+  let diff = Math.round((100 * m) / compare);
   return `${h}h${mr}m ${label} (${diff}%)`;
 }
 
@@ -74,7 +74,7 @@ async function* fetchEventAnalysis() {
 
 function summarize(days) {
   let summary = { calenderedMins: 0, meetingMins: 0, meetingCount: 0 };
-  days.forEach((es) => {
+  days.forEach(es => {
     summary.calenderedMins +=
       es.self.duration_mins +
       es.one_on_one.duration_mins +

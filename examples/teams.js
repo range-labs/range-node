@@ -8,8 +8,8 @@ import Range from '../lib/range.js';
 
 new Range()
   .listTeams()
-  .then((data) =>
-    data.teams.forEach((team) => {
+  .then(data =>
+    data.teams.forEach(team => {
       console.log(
         pad(team.slug, 20),
         pad(team.name, 20),
@@ -18,7 +18,7 @@ new Range()
       );
     })
   )
-  .catch((err) => console.error(err.message));
+  .catch(err => console.error(err.message));
 
 function countMembers(team) {
   return team.relations.reduce((count, rel) => count + (rel.is_member ? 1 : 0), 0);
